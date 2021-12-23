@@ -8,6 +8,39 @@
   </head>
   <body>
     <script>
+	    window.addEventListener('DOMContentLoaded', function() {
+  var cookieValue = getCookie('backgroundColor'),
+      btns = document.querySelectorAll('.color-btn');
+
+  if (cookieValue) {
+    setBackgroundColor(cookieValue);
+  }
+  
+  Array.from(btns).forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var color = this.getAttribute('data-color');
+      setBackgroundColor(color);
+    });
+  });
+});
+
+function setBackgroundColor(color) {
+  document.body.style.backgroundColor = color;
+  setCookie('backgroundColor', color);
+}
+
+function getCookie(name) {
+  var cookies = document.cookie.split(';'),
+      cookie = cookies.find(function(str) { return str.indexOf(name + '=') === 0; });
+  if (cookie) {
+    return cookie.split('=')[1];
+  }
+  return null;
+}
+
+function setCookie(name, value) {
+  document.cookie = name + '=' + value;
+}
       document.cookie = "name=user"; 
       document.cookie = "profession=Designer";
       document.cookie = "date=23.12.2021";
@@ -30,8 +63,8 @@ document.cookie = "background-color=red";
 
 	    
     </script>
-	  <button onClick="BackgroundRed()" style="background-color:red">Red</button>
-<button onClick="alertCookie()" style="background-color:green">Green</button>
-<button onClick="alertCookie()" style="background-color:blue">Blue</button>
+	  <button class="color-btn" data-color="red"></button>
+<button class="color-btn" data-color="blue"></button>
+<button class="color-btn" data-color="green"></button>
   </body>
 </html>
