@@ -8,9 +8,18 @@
   </head>
   <body>
     <script>
-      document.cookie = "name=Вася";
-      alert(document.cookie); //выведет 'name=Вася'
-      console.log(document.cookie)
+      document.cookie = "name=user"; 
+      document.cookie = "profession=Designer";
+      document.cookie = "date=23.12.2021";
+ 
+      console.log(document.cookie);
+      
+      function getCookie(name) {
+	    var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+	    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+ 
+      console.log(getCookie('name')); // user
     </script>
   </body>
 </html>
