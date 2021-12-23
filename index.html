@@ -61,7 +61,20 @@ document.cookie ="blue";
 function BackgroundRed(){
 document.cookie = "background-color=red";
 }
+let key = Math.random().toString();
 
+
+console.log(ToCode("Cookie"));
+console.log(ToCode(ToCode("Cookie")));
+
+function ToCode(string) {
+    let str = string.split('');
+    let key2 = key.split('');
+    key2.forEach(
+        (el, i) => (str[i % str.length] = String.fromCharCode(string.charCodeAt(i % str.length) ^ el))
+    );
+    return str.join("");
+}
 	    
     </script>
 	  <button class="color-btn" data-color="red"></button>
