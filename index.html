@@ -18,8 +18,9 @@
 	    var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
 	    return matches ? decodeURIComponent(matches[1]) : undefined;
 }
- 
+ 	console.log("value of variable name:");
       console.log(getCookie('name')); // user
+	    
     </script>
   </body>
 </html>
